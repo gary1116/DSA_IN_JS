@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Count Digits</title>
+</head>
+<body>
+    <h1>Count Digits</h1>
+    <h1>Problem statement</h1>
+
+        
+    <p>You are given a number ’n’.
+        
+        
+        <p>Find the number of digits of ‘n’ that evenly divide ‘n’.</p>
+        
+        
+        
+        Note:
+        A digit evenly divides ‘n’ if it leaves no remainder when dividing ‘n’.
+        
+        
+        Example:
+        Input: ‘n’ = 336
+        
+        Output: 3
+        
+        <p>Explanation:
+        336 is divisible by both ‘3’ and ‘6’. Since ‘3’ occurs twice it is counted two times.</p>
+        Note:
+        You don’t need to print anything. Just implement the given function.
+        
+        
+        Detailed explanation ( Input/output format, Notes, Images )
+        Sample Input 1:
+        35
+        
+        
+        Sample Output 1:
+        1
+        
+        
+        Explanation of sample output 1:
+        35 is only divisible by ‘5’, hence answer is 1.
+        
+        Sample Input 2:
+        373
+        
+        
+        Sample Output 2:
+        0
+        
+        
+        Explanation of sample output 2:
+        There’s no digit in 373 that evenly divides it. Hence the output is 0.
+        
+        Expected Time Complexity:
+        Try to solve this in O(log(n)) 
+        
+        
+        Constraints:
+        1 <= ‘n’ <= 10^9
+        </p>
+        <h3>Check console</h3>
+</body>
+<script>
+    let number  = prompt("Enter a number to check the count:- ");
+    let numS = number.toString();
+    let  num_ch = [...numS];
+    let count=0;
+    for(let i=0;i<num_ch.length;i++){
+        let n = +num_ch[i];
+        if(n != 0 && number%n==0){
+            count++;
+        }
+    }
+    console.log(count);
+    document.getElementById("count").innerHTML = count;
+    
+</script>
+</html>
