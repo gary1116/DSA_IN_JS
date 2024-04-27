@@ -1,0 +1,82 @@
+
+-------------------------------------------x-----------------------------x-----------------------------
+Everything in javascript happens inside an execution context
+
+assume javascript as a big box or a container in which whole code is executed that container is divided into two parts and those two parts are:-
+
+memory container and code container 
+
+memory container:- here everything is stored in key value pair relationship for example var a=10;
+a is the key and 10 is the value even functions are stored in key value pair relationship
+this memory container is also known as variable environment, It is sort of an environment in which everything is stored as a key value pair relationship
+
+
+code component:-
+here the code is executed one line at a time
+this is also called as thread of execution
+
+
+
+----------------------------------------------------x-------------------------x------------------
+
+Javascript is a synchronous single threaded language
+
+here single threaded means that it will execute the code one command at a time and in a specific order
+
+synchronous single thread means:-
+i.e. it will only go below once the current line is executed
+
+
+what happens when we run a js code:-
+
+---------------------------------------
+let n =2;                             |
+                                      |
+let squareNum =(n)=>{  (here n is the argument)               
+int ans  = n*n;                       |
+return n;                             |
+}                                     | 
+                                      |
+let square = squareNum(n); (here n is the parameter of the function)
+                                      |
+let square4 = squareNum(4);           |
+                                      |
+---------------------------------------
+
+when you run the code above a global execution context is created:-
+the execution context is created in two phases that is 
+the memory creation phase and
+the code execution phase
+two components are created memory and code component.
+
+Now in the first memory phase :-
+as it encounter line 1 it will allocate memory n 
+in line 2 it will allocate memory to squareNum
+
+now in n it will store a value which is undefined
+
+and in function squareNum it will store the whole code in variable named squareNum
+
+then in below line it will allocate memory to square and square4 which is undefined
+
+
+
+the second phase is the code execution phase:-
+so now the js will go line by line again and as soon as it ecounters line 1 it will place the value to the variable that is n = 2
+
+in the next line it has nothing to execute as the function is already stored in memory phase so it goes to next line where a variable is invoking a function in line 
+square =  squareNum(n);
+
+function is like a mini program and now inside a function a new execution context is created inside a global execution context and inside the mini execution context
+memory creation and code execution phase happens where we allocate memory and initialize variable and do the code that it is written in inside the function and return the variable 
+
+what happens while executing return statement:-
+whenever we see a return then we inform the function that our work here is done and return the control of the program where it was invoked
+
+now hwen the execution context for line:-
+let square = squareNum(n); is done then that whole execution context is deleted.
+
+now in the next line another mini execution context is created and does the same thing as the previous mini execution context has done.
+
+hwne each line is executed or the program is finished then the whole global execution context is deleted
+

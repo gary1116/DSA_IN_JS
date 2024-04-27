@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>check Prime</title>
+</head>
+<body>
+    <h1>Check Prime</h1>
+    <h2 id="isPrime"></h2>
+</body>
+<script>
+    let number = prompt("Enter a number to check if it's prime or not: - ");
+    let count = 0;
+    for(let i=1;i<=number;i++){
+        if(Math.floor(number%i==0)){
+            count++;
+        }
+    }
+    if(count==2){
+        document.getElementById("isPrime").innerHTML = "YES";
+    }else{
+        document.getElementById("isPrime").innerHTML = "NO";
+    }
+</script>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Armstrong Number</title>
+</head>
+<body>
+    <p>check Armstrong Number Code in script</p>
+    <p id="ArmstronNumber"></p>
+</body>
+<script>
+    let number = prompt("Enter a number:- ");
+    let numS = number.toString();
+
+    let ch =[...numS];
+    
+    checkArmstrong =(ch,number)=>{
+        let armstrongNumber=0;
+        for(let i=0;i<ch.length;i++){
+            armstrongNumber = armstrongNumber + Math.pow(parseInt(ch[i]) , ch.length);
+
+        }
+        if(number == armstrongNumber){
+            document.getElementById("ArmstronNumber").innerHTML= "Yes";
+        }else{
+            document.getElementById("ArmstronNumber").innerHTML= "No";
+
+        }
+    }
+
+    checkArmstrong(ch,number);
+</script>
+</html>

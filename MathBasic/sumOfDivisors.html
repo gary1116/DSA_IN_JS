@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum Of All Divisors</title>
+</head>
+<body>
+    <p>Check script</p>
+    <p id="sumOfDivisor"></p>
+</body>
+<script>
+    // Define the sumOfAllDivisors function
+    let sumOfAllDivisors = (number)=>{
+        let sum=0;
+
+        for(let i=0;i<=number;i++){
+            for(let j=1;j<=i;j++){
+                if(Math.floor(i%j===0)){
+                    sum+=j;
+                }
+            }
+        }
+
+        return sum;
+    }
+
+    // Get user input
+    let number = prompt("Enter a number:- ");
+    
+    // Calculate the sum of divisors
+    let finalSum = sumOfAllDivisors(parseInt(number));
+
+    // Display the result
+    document.getElementById("sumOfDivisor").innerHTML = finalSum;
+</script>
+</html>

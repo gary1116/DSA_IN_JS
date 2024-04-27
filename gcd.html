@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GCD</title>
+</head>
+<body>
+<p>gcd code</p>
+<p id="gcd"></p>
+</body>
+<script>
+
+let num1=prompt("enter number 1:- ");
+let num2 = prompt("enter number 2:-");
+
+
+let gcdCalculator = (num1, num2)=>{
+    let max=0;
+    let div = 0;
+    if(num1>num2){
+        max = num1;
+    }else{
+        max=num2;
+    }
+
+    for(let i=1;i<=max;i++){
+        if(num1%i==0 && num2%i==0){
+            div = i;
+        }
+
+    }
+    return div;
+}
+
+let value = gcdCalculator(num1,num2);
+
+document.getElementById("gcd").innerHTML=value;
+</script>
+</html>
