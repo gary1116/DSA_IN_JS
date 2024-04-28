@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bubble Sort</title>
+</head>
+
+<body>
+    <h1>Bubble Sort</h1>
+    <h3>Check console</h3>
+
+    <p>bubble sort takes the largest value to the right by adjaceny swappings.</p>
+</body>
+<script>
+    
+    let arr = [23,12,455,21,3];
+    
+    let len = arr.length;
+    // for(let i=0;i<len;i++){
+    //     arr[i] = prompt(`Enter element ${i}`);
+    // }
+
+    let bubbleSort = (arr,n)=>{
+        
+        for(let i=n-1;i>=0;i--){
+            for(let j=0;j<=i-1;j++){
+                if(arr[j]>arr[j+1]){
+                    let temp =arr[j+1];
+                    arr[j+1]=arr[j];
+                    arr[j]=temp;
+                }
+            }
+        }
+        return arr;
+    }
+    
+    function order(arr,n){
+        console.log("the ordered elements are :- ");
+        for(let i=0;i<n;i++){
+            console.log(arr[i]);
+        }
+    }
+    
+    let sortedArr = bubbleSort(arr,len);
+    order(sortedArr,len);
+
+</script>
+</html>
