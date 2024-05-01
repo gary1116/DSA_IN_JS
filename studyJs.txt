@@ -80,3 +80,6 @@ now in the next line another mini execution context is created and does the same
 
 hwne each line is executed or the program is finished then the whole global execution context is deleted
 
+
+-----------------------------------------x------------------------x----------------------------------------
+if we use function as an arrow function then it will behave as a variable so in that case we cannot initialize a function name first and then make the function which is possible while making normal js function.

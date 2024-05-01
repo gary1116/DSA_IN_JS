@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>merge sort</title>
+</head>
+<body>
+    <p>check console</p>
+    <p>Merge sort divides the code in half, sorts it and then merges it into one sorted array.</p>
+</body>
+<script>
+    let arr=[12,3,1,43,2,5,76,4,1,56,7,9,10];
+
+    let n=arr.length;
+
+    let Sort = (arr,low,mid,high)=>{
+        let left = low;
+        let right = mid+1;
+        let temp = [];
+
+        while(left <= mid && right <= high ){
+            if(arr[left]<=arr[right]){
+                temp.push(arr[left]);
+                left++;
+            }else{
+                temp.push(arr[right]);
+                right++;
+            }
+        }
+
+        while(left<=mid){
+            temp.push(arr[left]);
+            left++;
+        }
+
+        while(right<=high){
+            temp.push(arr[right]);
+            right++;
+        }
+
+
+        for(let i=low;i<=high;i++){
+            arr[i] = temp[i-low];
+        }    
+    }
+
+    let mergeSort =(arr,low,high)=>{
+        let mid = Math.floor((low+high)/2);
+
+        if(low>=high){
+            return ;
+        }
+
+        mergeSort(arr,low,mid); //for left half
+        mergeSort(arr,mid+1,high);  //for right half
+        Sort(arr,low,mid,high); //merging both halfs
+    }
+
+
+    mergeSort(arr,0,n-1);
+
+    function order(arr,n){
+        console.log("the ordered elements are :- ");
+        for(let i=0;i<n;i++){
+            console.log(arr[i]);
+        }
+    }
+
+    order(arr,n);
+
+
+</script>
+
+</html>
