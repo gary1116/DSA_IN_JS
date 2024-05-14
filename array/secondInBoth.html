@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>second largest and second smallest</title>
+</head>
+
+<body>
+    <p>check console</p>
+</body>
+<script>
+    let arr = [12, 21, 23, 33, 43, 46, 4, 32, 56, 77, 87, 41, 89, 19];
+
+    let n = arr.length;
+
+    let secondLargest = (arr, n) => {
+
+        let max = 0;
+        let sl = 0;
+        for (let i = 0; i < n; i++) {
+            if (arr[i] > max) {
+                max = arr[i];
+            }
+        }
+        for (let i = 0; i < n; i++) {
+            if (arr[i] > sl && arr[i] != max) {
+                sl = arr[i];
+            }
+        }
+
+        return sl
+    }
+
+    let secondL = secondLargest(arr, n);
+    console.log(secondL);
+
+
+    let secondSmallest = (arr, n) => {
+
+        let min=Number.MAX_VALUE;
+        let sSmall=Number.MAX_VALUE;
+        for (let i = 0; i < n; i++) {
+            if (arr[i] < min) {
+                min = arr[i];
+            }
+        }
+        for (let i = 0; i < n; i++) {
+            if (arr[i] < sSmall && arr[i] != min) {
+                sSmall = arr[i];
+            }
+        }
+
+        return sSmall;
+    }
+    let secondS = secondSmallest(arr, n);
+    console.log(secondS);
+
+
+</script>
+
+</html>

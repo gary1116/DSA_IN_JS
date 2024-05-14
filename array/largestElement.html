@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Largest Element</title>
+</head>
+<body>
+    <h1>largest element in an array</h1>
+    <p>check console</p>
+</body>
+<script>
+    let arr = [34,22,1,45,67,54,78,33,2,3,9,12];
+    let n = arr.length;
+    let findMax = (arr,n)=>{
+        let max = 0;
+        for(let i =0;i<n;i++){
+            if(arr[i]>max){
+                max = arr[i];
+            }
+        }
+        return max;
+    }
+
+    let largest = findMax(arr,n);
+console.log(largest);
+
+</script>
+</html>

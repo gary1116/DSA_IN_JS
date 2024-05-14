@@ -83,3 +83,177 @@ hwne each line is executed or the program is finished then the whole global exec
 
 -----------------------------------------x------------------------x----------------------------------------
 if we use function as an arrow function then it will behave as a variable so in that case we cannot initialize a function name first and then make the function which is possible while making normal js function.
+
+------------------------------------------------------------------------------
+HOISTING of LET and CONST 
+
+let a =10;
+var b=20;
+
+-----------------x-------------------x-----------------------
+console.log(b);
+let a=10;
+var b =100;
+
+
+now in js here you would get an undefined when we try to print b before it's initialization due to hoisting
+------------------------x---------------------x---------------------------------
+console.log(a);
+let a=10;
+var b =100;
+
+
+here you will get an error which:- says namasteJs1.js:10 Uncaught ReferenceError: Cannot access 'a' before initialization
+
+
+memory was assigned to be through var declaration and b was attached to the global object but in case of let and const they are allocated memory but they are stored in a separate memory space than global space and you cannot access that memory space before you have put in some value in there
+---------------------x--------------------------------x-----------------
+
+temporal dead zone is the time since when this let variable was hoisted and and till it is initialized some value is called as temporal dead zone
+
+---------------------------------------------------------------------------------
+
+difference between syntax ,type and reference error:-
+
+type error occurs during initialization for example:-
+
+const b ;
+b==100;
+console.log(b);
+
+here type error will occur:-uncaught type error : assignment to constant variable.
+
+Syntax ERROR:-
+syntax error occurs when there is a problem in syntax for example:-
+
+const b;
+
+here you will get a syntax error:- missing initializer in const declaration.
+
+Reference error:-
+for ex:-
+console,log(a);
+let a=9;
+here you will get a reference error:-
+cannot access 'a' before initialization.
+-----------------------------------------------------------------------------------------
+difference between var,let and const?
+
+const is for permanent declaration which will not change for example 
+name,birth year etc
+
+let:- it has a temporal deadzone which avoids error like undefined etc
+
+var is not used often in today's js as it is old age.
+
+to avoid temporal deadzone just put deckaration on top of the scope which will help us avoid unexpected error to avoid temporal dead zone.
+----------------------x-------------------------x-------------------------x----------------
+
+Block scope and shadowing:-
+
+what is block?
+block is also known as compound statement it is used to combine multiple js line into a single group
+we group multiple statements together in a block so that we can use it where js expects one statements.
+for example :-
+
+if(true){
+var a = 10;
+console.log(a);
+}
+
+code inside {} is called a block where js expects only one statement
+
+here that one statement is "10"
+--------------------------------------------------------------------------------------
+what is block scoped?
+whatever variable, function is accessible inside that block is called block scope
+
+for ex:-
+{
+var a=10;
+let b=20;
+const c =30;
+}
+
+here when we check var a will be globally scoped an let, const will be blocked scoped
+as it is stored in a reserved memory space which is for the block
+
+{
+var a=10;
+let b=20;
+const c =30;
+console.log(a);
+console.log(b);
+console.log(a);
+
+}
+console.log(a);
+console.log(b);
+console.log(c);
+
+
+here you will get output as 
+10
+20
+30
+10
+
+first 10,20,30 are from the {} and then another 10 is print because a is global scoped 
+for 
+console.log(b);
+console.log(c);
+it will show a reference error as b and c are not in global scope.
+----------------------------------------------------------------------------------
+what is shadowing?
+
+if we have same name variable outside the scope for example:-
+var a=100;
+{
+var a=10;
+let b=20;
+const c =30;
+console.log(a);
+console.log(b);
+console.log(a);
+
+}
+so in this case the variable a in block will shadow the variable a outside the scope and it will print 10.
+
+now in another case:-
+var a=100;
+{
+var a=10;
+let b=20;
+const c =30;
+console.log(a);
+console.log(b);
+console.log(a);
+
+}
+console.log(a);
+
+now the print statement outside it will print 10 as it is shadowing the var a =100 because both of them are pointing at one var a in global scope and since a=10 line is below it is overriding that value and updating it to 10 so this is called shadowing.
+
+the above case will only occur when it is var incase of let and const ot will not happen since let and const both are block scoped and var is global scoped
+let b=100;
+{
+var a=10;
+let b=20;
+const c =30;
+console.log(a);
+console.log(b);
+console.log(a);
+
+}
+console.log(b);
+
+here you will get output as 
+10
+20
+30
+100
+
+since the first three are printed as they were in block and shadowing only occurs for let and const when they are inside the block out side the block let b =20 is shadowed and in the first line b=100 is printed as it is within another memory space called script where let and const variables are stored another space other than global scope
+
+
+

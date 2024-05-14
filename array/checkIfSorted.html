@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check if array is sorted</title>
+</head>
+<body>
+    <p>check console</p>
+</body>
+<script>
+    let arr = [12, 21, 23, 33, 43, 46, 4, 32, 56, 77, 87, 41, 89, 19];
+
+    let n =arr.length;
+
+    let checkSort = (arr,n)=>{
+            let count=0;
+            let num=-1;
+            for(let i=0;i<n;i++){
+                if(arr[i]>=num){
+                    num=arr[i];
+                    count++;
+                }
+            }
+
+            if(count ==n){
+                return true;
+            }else{
+                return false;
+            }
+    }
+
+    let result = checkSort(arr,n);
+    console.log(result);
+</script>
+</html>

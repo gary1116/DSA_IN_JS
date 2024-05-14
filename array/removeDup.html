@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>remove duplicate</title>
+</head>
+<body>
+    <p>remove duplicate and share the length of array without duplicates</p>
+</body>
+
+<script>
+    // let arr = [1,1,2,3,2,3,4,4,5,5];
+
+    // let n = arr.length;
+
+    // function removeD(arr,n){
+    //     let num=-1;
+    //     let count=0;
+    //     for(let i=0;i<n;i++){
+    //         if(arr[i]>num){
+    //             num=arr[i];
+    //             count++;
+
+    //         }else if(arr[i]<num){
+    //             num=arr[i];
+    //             count++;
+    //         }
+    //     }
+    //     return count;
+    // }
+
+    // let result = removeD(arr,n);
+    // console.log(result);
+
+    let arr = [1,1,2,3,2,3,4,4,5,5];
+
+let n = arr.length;
+
+function countDistinct(arr, n) {
+    let distinctElements = {}; // Use an object to track distinct elements
+    let count = 0;
+    for (let i = 0; i < n; i++) {
+        if (!distinctElements[arr[i]]) { // If the element is not in the distinctElements object
+            distinctElements[arr[i]] = true; // Add it to the object
+            count++; // Increment the count of distinct elements
+        }
+    }
+    return count;
+}
+
+let result = countDistinct(arr, n);
+console.log(result);
+
+
+</script>
+</html>
