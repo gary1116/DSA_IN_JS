@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Missing Number</title>
+</head>
+<body>
+    <p>check console!!</p>
+    <p>Find the missing number from the array</p>
+</body>
+<script>
+    let arr = [0,9,1,2,8,7,3,4,6,5];
+
+    let n =arr.length;
+
+    function findMissing(arr, n){
+        let result=0;
+        let temp = new Array(n + 1).fill(0); // Initialize the array with 0s
+
+        for(let i=0;i<n;i++){
+            temp[arr[i]]++;
+        }
+        let i=0;
+        while(i<n+1){
+            if(temp[i]==0){
+                result=i;
+            }
+            i++;
+        }
+        return result;
+    }
+
+    let result = findMissing(arr,n);
+    console.log(result);
+</script>
+</html>

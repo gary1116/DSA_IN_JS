@@ -84,7 +84,93 @@ hwne each line is executed or the program is finished then the whole global exec
 -----------------------------------------x------------------------x----------------------------------------
 if we use function as an arrow function then it will behave as a variable so in that case we cannot initialize a function name first and then make the function which is possible while making normal js function.
 
-------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------x-----------------------
+what is window?
+window is a global object which is created along the global execution context.
+
+whenever you create a execution context a "this" is created along with it even for the functional execution context and in global level that "this" points to window which is the global object
+
+window is the global object and the global space is attached to it
+--------------------------------x----------------------------------------------------------
+global space:-
+
+var a=10;
+this a is in global space
+function b(){
+var x=10;
+}
+now function b() is in global space but var x is not in global space as it is initialized inside the function
+
+-------------------------x------------------------x----------------------------------------
+
+undefined and not defined:-
+undefined is only present in js and not in other languages.
+
+let a =3;
+console.log(x);
+
+
+now in global execution context memory and code component is created at first the global execution context will check if there is any variable/function present or not if a variable is present then it will allocate some memory in the form of "undefined" and in case of function it will just make a copy of that function and store it in memory component 
+
+Now in the code component when js goes down to line:-
+let a =3;
+then it assigns the value 3 to a in global execution context before that it is only defined as undefined only 
+
+while not defined is when a variable is not being initialized and it is getting used
+
+for example in line:-
+console.log(x);
+
+here you will get x is not defined as it wasn't initialized before in js file.
+-------------x------------------------x-----------------x----------------------------------
+
+scope, scope chain, lexical environment:-
+
+
+function a(){
+        console.log(b);
+    }
+    
+    var b=10;
+    a();
+
+in this code above we will be able to print the value of b even if it is not initialized inside function a.
+
+
+function a(){
+        var b=10;
+    }
+    
+    a();
+    console.log(b);
+
+however in code above we will get b is undefined when it is initialized in function a but we are trying to print it outside of function b.
+
+
+
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+what is lexical environment?
+
+{{whenever an execution context is created a lexical environment is also created
+lexical environment is the local memory along with the lexical environment of its parent for example in above code while invoking function a() we were able to print b which was initialized outside function a in its parent execution context}}
+
+but
+
+we were not able to do the same for 2nd example because the b value was initialized in function a and so the lexical environment doesn't has the scope to check its child's scope so it shows undefined
+
+lexical means in order or in hierarchy which means function a in the above example was lexically inside global function
+
+lexical environment means the local memory along with the lexical environment of it's parent.
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+what is scope chain?
+
+scope chain is the chain of  lexical environment
+
+scope chain means it will keep on going from one lexical environment to (it's parent)another until it can't find the value pf that particular variable then it will send an error of not defined
+------------------x----------------------x------------------------x------------------------
+---------------------------------------------------------------------------------------------------------------------------------
 HOISTING of LET and CONST 
 
 let a =10;
@@ -254,6 +340,84 @@ here you will get output as
 100
 
 since the first three are printed as they were in block and shadowing only occurs for let and const when they are inside the block out side the block let b =20 is shadowed and in the first line b=100 is printed as it is within another memory space called script where let and const variables are stored another space other than global scope
+--------------------------------------------------------------------------x--------------------------------x--------------------------
 
+what is closure?
+
+
+function x(){
+    var a =11;
+    function y(){
+        console.log(a);
+    }
+    y();
+}
+x();
+
+here the output will be 11 because of its lexical environment concept.
+
+closure is a function which is bind together with its lexical environment
+function along with its lexical scope bundled together is called a scope.
+
+
+function x(){
+    var a =11;
+    function y(){
+        console.log(a);
+    }
+    return y;
+}
+var z = x();
+
+console.log(z);
+z();
+
+we can even return a function made inside a function and store that in a variable
+as done in the above example and after calling that variable we will see the output 
+if function y which is 11 because of closures having its function's lexical scope in memory.
+
+you can also write this function:
+function x(){
+    var a =11;
+    function y(){
+        console.log(a);
+    }
+    return y;
+}
+
+AS THIS :
+function x(){
+    var a =11;
+    return function y(){
+        console.log(a);
+    } 
+}
+
+
+corner case in closure:-
+
+function x(){
+    var a =11;
+    function y(){
+        console.log(a);
+    }
+    a=100;
+    return y;
+}
+var z = x();
+
+console.log(z);
+z();
+
+here it will return a 100 as output
+because the answer is that a's reference is returned not the value and 
+here the  reference a is updated to 100.
+
+
+uses of closures:-
+ it is used in module design pattern 
+ it is used in iterators
+ it is used in setTimeouts 
+-------------------------------------x-------------------------x------------------x------------x-----------------------------------
 
 
