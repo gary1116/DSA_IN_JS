@@ -357,7 +357,7 @@ x();
 here the output will be 11 because of its lexical environment concept.
 
 closure is a function which is bind together with its lexical environment
-function along with its lexical scope bundled together is called a scope.
+function along with its lexical scope bundled together is called a closure.
 
 
 function x(){
@@ -420,4 +420,162 @@ uses of closures:-
  it is used in setTimeouts 
 -------------------------------------x-------------------------x------------------x------------x-----------------------------------
 
+ here:-
+
+ function x(){
+    var i =1;
+    setTimeout(function(){
+        console.log(i);
+    },4000);
+    console.log("nnn");
+}
+
+x();
+
+the setTimeout forms a closure.
+
+the setTimeout takes the callback function And stores it and attaches the timer of 4 seconds and goes ahead 
+once that timeout has
+
+
+in this case :-
+
+function x(){
+    for(var i =1;i<=5;i++){
+        setTimeout(function(){
+            console.log(i);
+        },i*1000);
+    }
+    console.log("nnn");
+}
+
+x();
+
+output will be :-
+6
+6
+6
+6
+6
+because var is global scope and since the reference of "i" is passed it stores the same value
+for each and every iteration and since js doesn't wait for setTimeout it finishes it's execution
+and by the time runs out the value of i is 6 after i =5 it increments the last time and store it.
+
+but in this case :-
+function x(){
+    for(let i =1;i<=5;i++){
+        setTimeout(function(){
+            console.log(i);
+        },i*1000);
+    }
+    console.log("nnn");
+}
+
+x();
+
+the output will be correct which is :-
+1
+2
+3
+4
+5
+
+because let is block scope which means it will store that variable for each iteration and print it after the timer ends
+that means after each and every new iteration this i is a new copy of i and each time setTimeout is run this callback function has a new identity of i with it
+so it is like each time i is called it is referring to a different memory location which is a separate copy of i
+
+it is only working because let is block scoped and it creates a new copy every time the loop is excuted.
+
+
+
+
+we can do the same with var too
+
+here it is :-
+function x(){
+    for(var i =1;i<=5;i++){
+
+        function close(x){
+            setTimeout(function(){
+                console.log(x);
+            },x*1000);
+        }
+        close(i);
+    }
+    console.log("nnn");
+}
+
+x();
+
+in this code inside the for loop we have made another function named close
+and in that function we have passed the setTimeout function and outside the function we have called the function
+close and passed i to it.
+
+here every time we call the close function with i it creates the new copy of i for itself.
+
+
+example to explain closure:
+
+function outer(){
+var a =10;
+function inner(){
+console.log(a);
+}
+return inner;
+}
+
+outer()(); 
+
+here the variable is created in function outer and inside function outer another function is created called inner and inside function inner variable a is printed 
+here the inner function has its lexical scope of its parent too so this is called as closures and also if we return the function inner and use it outside it's scope then too it will remember its lexical environment and do the job.
+in outer()();
+outer() is called, which returns the inner function.
+The returned inner function is then immediately invoked with ().
+first () is used to returning the inner function.
+second () is used to calling the inner function.
+
+
+if there is another function outside outer then too the inner function will form a closure:
+example:-
+function outest(){
+    var c =220;
+function outer(b){
+var a =10;
+function inner(){
+console.log(a, b , c);
+}
+return inner;
+}
+return outer;
+}
+var close = outest()("helloworld"); 
+close();
+
+here we have created a function outside outer named outest and it has a new variable called c 
+inner can have access to c variable outside outer cause of the lexical environment of outer
+now outside its scope we are creating a variable named close and calling outest()
+and passing argument to outer function ("helloworld");
+and in the next line we are calling close to check if it prints all variables or not.
+
+
+disadvantages of closure:-
+overconsumption of memory
+those variables inside closure are not garbage collected till the program expired 
+and if not handled it can lead to memory leaks
+
+
+gabrage collector is like a program which freezes up the un utilized memory
+
+relation between garbage collector and closures:-
+
+function a(){
+    var x =2;
+    return function b(){
+        console.log(x);
+    }
+}
+
+a();
+
+after execution of a the var x is garbage collected but due to closure of func b it is not garbage collected.
 

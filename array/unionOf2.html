@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>union of two</title>
+</head>
+<body>
+    <p>check console</p>
+</body>
+<script>
+let arr = [1,1,2,3,3,4,5,5];
+let arr2 = [4,5,5,6,7,7,8];
+let n =arr.length;
+let m=arr2.length;
+
+function union(arr,arr2,n,m){
+    let result = [];
+    let i =0;
+    let j=0;
+
+    while (i < n && j < m) {
+        if (arr[i] <= arr2[j]) {
+            if (result.length == 0 || result[result.length - 1] != arr[i]) {
+                result.push(arr[i]);
+            }
+            i++;
+        } else {
+            if (result.length == 0 || result[result.length - 1] != arr2[j]) {
+                result.push(arr2[j]);
+            }
+            j++;
+        }
+    }
+
+    while (i < n) {
+        if (result.length == 0 || result[result.length - 1] != arr[i]) {
+            result.push(arr[i]);
+        }
+        i++;
+    }
+
+    while (j < m) {
+        if (result.length == 0 || result[result.length - 1] != arr2[j]) {
+            result.push(arr2[j]);
+        }
+        j++;
+    }
+
+        return result;
+
+}
+
+
+let resultArr = union(arr,arr2,n,m);
+
+
+for(let i=0;i<resultArr.length;i++){
+    console.log(resultArr[i]);
+}
+
+</script>
+</html>
