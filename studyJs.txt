@@ -578,4 +578,227 @@ function a(){
 a();
 
 after execution of a the var x is garbage collected but due to closure of func b it is not garbage collected.
+-----------------------x------------------x--------------------------x--------------------x--------------------------------------------
 
+
+--------------------------------------------------x----------x-------------x-------------------------------------------
+what is anonymous function?
+
+anonymous function is a function without name
+
+let numbers = [1, 2, 3, 4, 5];
+let squares = numbers.map(function(num) {
+    return num * num;
+});
+console.log(squares); // Outputs: [1, 4, 9, 16, 25]
+----------------------------------------------------------------------
+
+
+what is higher order function?
+
+a higher-order function is a function that either takes one or more functions as arguments,
+ returns a function, or both. 
+
+ function filter(arr, fn) {
+    let result = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (fn(arr[i])) {
+            result.push(arr[i]);
+        }
+    }
+    return result;
+}
+
+let numbers = [1, 2, 3, 4, 5];
+let evenNumbers = filter(numbers, function(num) {
+    return num % 2 === 0;
+});
+
+console.log(evenNumbers); // Outputs: [2, 4]
+
+------------------------------------------------------------------------
+
+
+what is a function statement?
+function a(){
+ console.log("a called");
+}
+this way of creating a function is called a function statement
+
+-----------------------------------------------------------------------
+what is a funcrion expression?
+var b = function(){
+    console.log("b called");
+}
+
+this way of creating a function is called function expression
+
+----------------------------------------------------------------------
+difference between function statement and expression?
+
+a();
+b();
+
+function a(){
+ console.log("a called");
+}
+
+var b = function(){
+    console.log("b called");
+}
+
+during hoisting if we call both functions before the code is executed in js then function expression
+will show an error undefined as it b will only work when js engine executes it line by line and it will
+not work before that when we call b while a is a function statement so it already  
+has a copy of that function so even if we call before js engine has executed that line it will work.
+
+---------------------------------------------------------------------------------------------------------------
+what is function declaration?
+ function declaration is the same as function statement.
+ function a(){
+ console.log("a called");
+}
+----------------------------------------------------------------------------
+what is an anonymous function?
+
+an anonymous function is a function which doesn't has any name.
+example:-
+
+var c   = function(){
+    console.log("c called!");
+}
+
+--------------------------------------------------------------------------
+
+what is a name function expression?
+when we give name to the function in the function expression is called as name function expression
+
+example:-
+var d = function xyz(){
+console.log("d called");
+}
+
+here we have given name to the function otherwise we can use anonymous function.
+
+---------------------------------------------------------------------------------------
+
+difference between parameters and arguments?
+
+function x(param1, param2){
+
+}
+
+
+x(arg1, arg2);
+
+when we pass value inside a function it is called as argument.
+and the values that we get inside a function are called parameters.
+
+
+-----------------------------------------------------------------------------
+
+what are first class functions?
+the ability to use function to be used as valies and can be passed as an argument
+to another function and can be returned as a function is called as first class function.
+var b = function(){
+    return function xyz(){
+        console.log("called");
+    }
+}
+
+console.log(b());
+
+here we are returning a function.
+
+functions are firstclass citizens?
+it means the same thing it is nothing different just different words first class, first class citizens are same.
+----------------------------------------------------------------------------------------------------------------------
+
+
+what are arrow functions?
+
+let a = ()=>{
+    console.log("a called");
+}
+
+a();
+
+
+--------------------------------------------------------------------------
+what is a callback Function?
+A callback function in JavaScript is a function that is passed as an argument to another function and is executed after some operation has been completed. 
+Callback functions are commonly used for asynchronous operations like handling events, performing network requests, or executing code after a timeout.
+
+function x(y){
+
+}
+
+when we are calling function x let us pass function y
+x(function y(){
+
+})
+this function y is the callBack function.
+
+it is upto function x when the function y needs to be called.
+
+setTimeout(function(){
+console.log("timer");
+},5000);
+
+function x(y){
+        console.log("x");
+        y();
+    }
+
+    x(function y(){
+        console.log("y");
+    });
+
+setTimeout is using that function as a callback function 
+output will be :
+x
+y
+timer
+---------------------------------------------------------------------
+scope demo with event listener:-
+
+html:-
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lecture 1 of namaste js</title>
+    <script src="namasteJs1.js" defer></script>
+</head>
+<body>
+    <h2>Check console</h2>
+    <button id="clickMe">Click Me</button>
+    <p id="paragh"></p>
+</body>
+</html>
+
+js file:-
+
+
+
+function attachText(){
+    let count =0;
+    document.getElementById("clickMe").
+    addEventListener("click", function xyz(){
+    document.getElementById("paragh").textContent = `Hi this is test content, ${count++}`;
+    
+    })
+}
+
+attachText();
+
+
+// here function xyz is a callback function for that addeventListener
+// and that addEventListener is forming closure with attachText function
+---------------------------------------------------------------------------
+Asynchronous JavaScript and Event loop:-
+there is a call stack inside the js engine and js engine is inside the browser
+browser also has local storage inside it 
+it also has timer inside it, url is also present.
