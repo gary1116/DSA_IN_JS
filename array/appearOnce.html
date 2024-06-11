@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Appearing Once</title>
+</head>
+<body>
+    <p id="result"></p>
+</body>
+<script>
+    let arr = [1,1,2,3,3,4,4];
+    let n = arr.length;
+
+    function once(arr,n){
+        let xorr=0;
+        for(let i =0;i<n;i++){
+            xorr = xorr^arr[i];
+        }
+        return xorr;
+
+    }
+
+    let result = once(arr,n);
+
+document.getElementById('result').textContent = `this is the number that appears once :- ${result}`;
+</script>
+</html>
